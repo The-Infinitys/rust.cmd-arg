@@ -1,4 +1,4 @@
-pub use crate::cmd_arg;
+pub mod cmd_arg;
 #[cfg(test)]
 mod tests {
     #[test]

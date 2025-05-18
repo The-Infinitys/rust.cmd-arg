@@ -12,5 +12,3 @@ readme = "README.md"
 [dependencies]
 colored = "3.0.0"
 
-[build-dependencies]
-colored = "3.0.0"
