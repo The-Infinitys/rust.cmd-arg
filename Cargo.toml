@@ -3,7 +3,7 @@ name = "cmd-arg"
 version = "0.1.0"
 edition = "2024"
 license = "MIT OR Apache-2.0"
-
+repository = "https://github.com/The-Infinitys/rust.cmd-args"
 
 [dependencies]
 colored = "3.0.0"
