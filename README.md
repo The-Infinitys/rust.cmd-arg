@@ -97,7 +97,7 @@ Consider running your compiled program (`your_program_name`) with the following 
 cargo run -- -iv file.txt --data=apple,banana --verbose -- positional1 --pos-flag another-arg
 ```
 
-The `init()` function would parse this command line. The `println!("{}", command);` call using the `Display` trait would produce output similar to this (coloring included):
+The `get()` function would parse this command line. The `println!("{}", command);` call using the `Display` trait would produce output similar to this (coloring included):
 
 ```text
 Command: target/debug/your_program_name

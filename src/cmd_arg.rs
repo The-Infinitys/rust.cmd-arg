@@ -25,7 +25,6 @@
 use colored::Colorize;
 use std::env;
 use std::fmt;
-
 /// Represents the classification of a command-line argument based on its format.
 /// This helps distinguish between different syntactical types of input.
 #[derive(Debug, Clone, PartialEq)]
@@ -142,11 +141,11 @@ impl fmt::Display for Command {
                     f,
                     "  {}. {} ({}: {}): {}: {}",
                     (i + 1).to_string().bold(), // Item number in bold
-                    opt.opt_str.magenta(), // The option string itself in magenta
-                    "Type".cyan(), // Label "Type" in cyan
-                    opt_type, // The determined option type (colored based on type)
+                    opt.opt_str.magenta(),      // The option string itself in magenta
+                    "Type".cyan(),              // Label "Type" in cyan
+                    opt_type,        // The determined option type (colored based on type)
                     "Values".cyan(), // Label "Values" in cyan
-                    values // The associated values (colored based on presence)
+                    values           // The associated values (colored based on presence)
                 )?;
             }
         }
@@ -197,8 +196,8 @@ impl Command {
     /// # Arguments
     ///
     /// * `opt`: The `Option` struct containing the parsed details of an argument
-    ///          that is considered either a standard option or a simple argument
-    ///          appearing before `"--"`.
+    ///   that is considered either a standard option or a simple argument
+    ///   appearing before `"--"`.
     fn add_opt(&mut self, opt: Option) {
         self.opts.push(opt);
     }
@@ -285,7 +284,7 @@ fn parse_values(value: &str) -> Vec<String> {
 /// A `Command` struct containing the fully parsed command line: the program
 /// name, the list of options and initial simple arguments (`opts`), and the
 /// list of simple arguments found after the `"--"` separator (`args`).
-pub fn init() -> Command {
+pub fn get() -> Command {
     // Get an iterator over the command-line arguments provided by the environment.
     // This is generally efficient as it avoids collecting all arguments upfront
     // unless necessary (like with `.extend()`).
@@ -349,7 +348,8 @@ pub fn init() -> Command {
                 if arg.len() > 2 {
                     // It's potentially bundled (e.g., "-iv" has length 3).
                     // Iterate over the characters *after* the initial hyphen.
-                    for c in arg.chars().skip(1) { // Skip the leading '-'
+                    for c in arg.chars().skip(1) {
+                        // Skip the leading '-'
                         // For each character, create a separate ShortOpt.
                         // The opt_str is the character prefixed by a hyphen (e.g., "-i", "-v").
                         // Bundled short options typically don't take values in this format,
@@ -376,7 +376,7 @@ pub fn init() -> Command {
                 // and it occurred *before* the "--" separator.
                 // Add it to the opts list as per the defined behavior of this parser.
                 // The opt_str is the full argument string. opt_values is empty.
-                 command.add_opt(Option {
+                command.add_opt(Option {
                     opt_type: OptionType::Simple,
                     opt_str: arg,
                     opt_values: Vec::new(),
