@@ -1,0 +1,15 @@
+[package]
+name = "cmd-arg"
+version = "0.1.0"
+edition = "2024"
+license = "MIT OR Apache-2.0"
+
+
+[dependencies]
+colored = "3.0.0"
+
+[lib]
+crate-type = ["staticlib"]
+
+[build-dependencies]
+colored = "3.0.0"
